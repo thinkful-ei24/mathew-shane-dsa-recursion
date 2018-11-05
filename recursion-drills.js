@@ -107,7 +107,7 @@ function fibonacci(input, array = []) {
 }
 
 //1 1 2 3 5 8 13 21 34
-console.log(fibonacci(8))
+//console.log(fibonacci(8))
 
 function anagram(string) {
   const results = {}
@@ -123,7 +123,7 @@ function anagram(string) {
   return Object.keys(results);
 
 }
-console.log(anagram('cat'));
+//console.log(anagram('cat'));
 
 const animalHierarchy = [
   {id: 'Animals', parent: null},
@@ -141,4 +141,57 @@ function traverse(animalHierarchy, parent) {
   return node;
 }
 
-console.log(traverse(animalHierarchy, null));
+//console.log(traverse(animalHierarchy, null));
+
+const hierarchy = [
+  {id: 'Zuckerberg', parent: null},
+  {id: 'Schroepfer', parent: 'Zuckerberg'},
+  {id: 'Bosworth', parent: 'Schroepfer'},
+  {id: 'Zhao', parent: 'Schroepfer'},
+  {id: 'Steve', parent: 'Bosworth'},
+  {id: 'Kyle', parent: 'Bosworth'},
+  {id: 'Andra', parent: 'Bosworth'},
+  {id: 'Richie', parent: 'Zhao'},
+  {id: 'Sofia', parent: 'Zhao'},
+  {id: 'Jen', parent: 'Zhao'},
+  {id: 'Schrage', parent: 'Zuckerberg'},
+  {id: 'VanDyck', parent: 'Schrage'},
+  {id: 'Swain', parent: 'Schrage'},
+  {id: 'Sabrina', parent: 'VanDyck'},
+  {id: 'Michelle', parent: 'VanDyck'},
+  {id: 'Josh', parent: 'VanDyck'},
+  {id: 'Blanch', parent: 'Swain'},
+  {id: 'Tom', parent: 'Swain'},
+  {id: 'Joe', parent: 'Swain'},
+  {id: 'Ana', parent: 'Kelley'},
+  {id: 'Wes', parent: 'Kelley'},
+  {id: 'Eric', parent: 'Kelley'},
+  {id: 'Kelley', parent: 'Sandberg'},
+  {id: 'Vinni', parent: 'Moissinac'},
+  {id: 'Chuck', parent: 'Moissinac'},
+  {id: 'Amy', parent: 'Moissinac'},
+  {id: 'Moissinac', parent: 'Sandberg'},
+  {id: 'Morgan', parent: 'Hernandez'},
+  {id: 'Inga', parent: 'Hernandez'},
+  {id: 'Rowi', parent: 'Hernandez'},
+  {id: 'Hernandez', parent: 'Sandberg'},
+  {id: 'Goler', parent: 'Sandberg'},
+  {id: 'Annie', parent: 'Goler'},
+  {id: 'Julie', parent: 'Goler'},
+  {id: 'Eddie', parent: 'Goler'}
+];
+
+function bossTraverse(hierarchy, parent) {
+  function traverseTree(hierarchy, parent) {
+    let node = {};
+    hierarchy.filter(item => item.parent === parent).forEach(item => node[item.id] = traverseTree(hierarchy, item.id));
+    return node;
+  }
+  const tree = traverseTree(hierarchy, parent);
+  function showTree(tree, parent) {
+    console.log(tree['Zuckerberg']);
+  }
+  return showTree(tree);
+}
+
+console.log(bossTraverse(hierarchy, null));
