@@ -28,4 +28,14 @@ function reverseString(myStr) {
   return myStr[myStr.length-1] + reverseString(myStr.slice(0, myStr.length-1));
 }
 
-console.log(reverseString('This is a string'))
+// console.log(reverseString('This is a string'))
+
+function nthTriangularNumber(number) {
+  if (number === 0) {
+    return 0;
+  }
+  
+  return number + nthTriangularNumber(number - 1);
+}
+
+// console.log(nthTriangularNumber(5));
