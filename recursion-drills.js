@@ -58,7 +58,7 @@ function binaryRep(input) {
   return binaryRep(Math.floor(input/2)) + Math.floor(input%2);
 }
 
- console.log(binaryRep(10));
+//  console.log(binaryRep(10));
 
 
 function factorial(input) {
@@ -68,4 +68,33 @@ function factorial(input) {
   return input * factorial(input - 1);
 }
 
-console.log(factorial(5))
+// console.log(factorial(5))
+
+// function fibonacci(input, array = []) {
+//   if (input <= 2) { 
+//     return 1;
+//   }
+//   const fibNumber = fibonacci(input - 1) + fibonacci(input - 2);
+//   // console.log(fibonacci(input - 1))
+  
+//   return fibNumber, [...array, fibonacci(input - 1)];
+// }
+function fibonacci(input, array = []) {
+  if (input <= 0) {
+    throw new Error('Not valid');
+  }
+
+  if (input === 1 ) {
+    return [1, []];
+  } else {
+    const [current, sequence] = fibonacci(input-1);
+    return [current + sequence[sequence.length - 1 ] || 1, [...sequence, current]] 
+  }
+}
+
+//1 1 2 3 5 8 13 21 34
+console.log(fibonacci(8))
+
+function anagram() {
+
+}
