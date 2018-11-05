@@ -59,3 +59,13 @@ function binaryRep(input) {
 }
 
  console.log(binaryRep(10));
+
+
+function factorial(input) {
+  if(input <= 0) {
+    return 1;
+  }
+  return input * factorial(input - 1);
+}
+
+console.log(factorial(5))
