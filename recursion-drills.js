@@ -8,3 +8,12 @@ function counter(sheep) {
 }
 
 console.log(counter(3));
+
+function doubleArray(arr) {
+  if(arr.length === 0) {
+    return '';
+  }
+  return [arr[0] * 2, ...doubleArray(arr.slice(1))]
+}
+
+console.log(doubleArray([1,2,3]))
